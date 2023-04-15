@@ -10,7 +10,7 @@ temp=/usr/bin/Adafruit_Python_DHT/examples/AdafruitDHT.py
 lines=`cat /$path_log/$room |wc -l`
 if [ $lines -ge 720 ]
 then
-mv /$path_log/$room /$path_log_archive/$(date +"%Y-%m-%d-%H-%M")_room_temp.log.bak
+mv /$path_log/$room/$path_log_archive/$(date +"%Y-%m-%d-%H-%M")_room_temp.log.bak
 fi
 
 ###Снимаем температуру с датчика находящийся на 4м пине

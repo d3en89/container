@@ -10,15 +10,17 @@ funct.check_dir("/var/www/container/log/archive")
 ###Проверяем наличие файлов логов если их нет то создаём
 funct.check_file("/var/www/container/log/container.log")
 funct.check_file("/var/www/container/log/room_temp.log")
+funct.check_file("/var/www/container/log/speed.log")
 
 @app.route('/')
 def index():
     try:
         degree_1 = funct.room_degree()
+        degree_2 = funct.speed_internet()
     except FileNotFoundError:
         degree_1 = '-'
         funct.log_write("Ошибка, файл room_temp.log - не найден\n")
-    return  render_template('index.html', room_degree=degree_1)
+    return  render_template('index.html', room_degree=degree_1, speed_internet=degree_2)
 
 @app.route('/hardware.html')
 def hardware():

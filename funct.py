@@ -1,4 +1,4 @@
-import  os.path
+import os.path
 import datetime
 import subprocess
 
@@ -22,6 +22,14 @@ def room_degree():
         sign = u'\N{DEGREE SIGN}'
         lines = file.readlines()[-1].replace('Temp', f'С{sign}').replace("Humidity", 'Влажность').replace("*", ",")
     return lines
+
+def speed_internet():
+    def speed_internet():
+        with open(f'/var/www/container/log/speed.log', "r", encoding='utf-8') as file:
+            sign = u'\N{DEGREE SIGN}'
+            lines = file.readline()
+        return lines
+
 
 ### Функция записи в лог файл контайнера
 def log_write(text):
