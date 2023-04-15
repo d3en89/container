@@ -1,0 +1,38 @@
+{% extends 'base_syslog.html' %}
+
+{% block content %}
+    <h1>{% block title %} Syslog{% endblock %}</h1>
+{% endblock %}
+
+{% block tab_1 %}
+ <form method="post" action="">
+ <input type="radio" name="log" id="syslog" value="Syslog"><label for="syslog">Syslog</label>
+ <input type="radio" name="log" id="container" value="Container"><label for="container">Container</label>
+ <p> <input type="text" name="rsys" size="10"><button type="submit">Показать</button>
+  </p></form>
+{% endblock %}
+
+{% block content_syslog %}
+    <div style="width: 100%; height: 100%; ">
+    {% for i in cat_syslog %}
+        <li>{{i}}</li>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block tab_2 %}
+
+{% endblock %}
+
+{% block content_container %}
+
+{% endblock %}
+
+
+{% block tab_3 %}
+<p>333</p>
+{% endblock %}
+
+{% block tab_4 %}
+<p>4444</p>
+{% endblock %}
