@@ -24,11 +24,10 @@ def room_degree():
     return lines
 
 def speed_internet():
-    def speed_internet():
-        with open(f'/var/www/container/log/speed.log', "r", encoding='utf-8') as file:
-            sign = u'\N{DEGREE SIGN}'
-            lines = file.readline()
-        return lines
+    with open(f'/var/www/container/log/speed.log', "r", encoding='utf-8') as file:
+        sign = u'\N{DEGREE SIGN}'
+        lines = file.readline()
+    return lines
 
 
 ### Функция записи в лог файл контайнера

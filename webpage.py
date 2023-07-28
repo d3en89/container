@@ -21,7 +21,6 @@ def index():
         degree_1 = '-'
         funct.log_write("Ошибка, файл room_temp.log - не найден\n")
     return  render_template('index.html', room_degree=degree_1, speed_internet=degree_2)
-
 @app.route('/hardware.html')
 def hardware():
     return  render_template('hardware.html')
