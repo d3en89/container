@@ -5,5 +5,5 @@
 
 Скрипт измерения скорости интернета static/script/get_speedtest.py
  - для  его работы необходима программа speedtest-cli
- - её можно установить sudo apt-get install speedtest-cli
+   - её можно установить sudo apt-get install speedtest-cli
  - Его надо ставить в крон
