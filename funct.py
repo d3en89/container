@@ -1,6 +1,5 @@
 import os.path
 import datetime
-import subprocess
 
 ### Read syslog file
 ### Читаем файл сислога с конца на указанное кол-во
@@ -12,19 +11,17 @@ def file_read(files, rows):
         read.append(lines[-i])
     return read
 
-#print(file_read("/var/log/syslog", "1"))
-
 
 ###вытаскиваем последнюю запись от датчика температуры №1
 def room_degree():
     day = datetime.datetime.now().strftime('%Y-%m-%d')
-    with open(f'/var/www/container/log/{day}_room_temp.log', "r", encoding='utf-8') as file:
+    with open(f'log/{day}_room_temp.log', "r", encoding='utf-8') as file:
         sign = u'\N{DEGREE SIGN}'
         lines = file.readlines()[-1].replace('Temp', f'С{sign}').replace("Humidity", 'Влажность').replace("*", ",")
     return lines
 
 def speed_internet():
-    with open(f'/var/www/container/log/speed.log', "r", encoding='utf-8') as file:
+    with open(f'log/speed.log', "r", encoding='utf-8') as file:
         sign = u'\N{DEGREE SIGN}'
         lines = file.readline()
     return lines

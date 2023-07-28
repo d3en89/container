@@ -1,7 +1,10 @@
 import subprocess
+import sys
+
+sys.path.insert(1, '/mnt/D2A44A41A44A2875/YandexDisk/dev/container')
 
 from webpage import app
-from .static.script.get_speedtest import test_speed
+from static.script.get_speedtest import test_speed
 
 try:
     subprocess.check_call(["ping", "-c 1", "8.8.8.8"])
