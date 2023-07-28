@@ -22,7 +22,6 @@ def room_degree():
 
 def speed_internet():
     with open(f'log/speed.log', "r", encoding='utf-8') as file:
-        sign = u'\N{DEGREE SIGN}'
         lines = file.readline()
     return lines
 
