@@ -4,23 +4,23 @@ import funct
 app = Flask(__name__)
 
 ##Проверяем структуру папок если её нет то создаём
-funct.check_dir("/var/www/container/log")
-funct.check_dir("/var/www/container/log/archive")
+# funct.check_dir("/var/www/container/log")
+# funct.check_dir("/var/www/container/log/archive")
 
 ###Проверяем наличие файлов логов если их нет то создаём
-funct.check_file("/var/www/container/log/container.log")
-funct.check_file("/var/www/container/log/room_temp.log")
-funct.check_file("/var/www/container/log/speed.log")
+# funct.check_file("/var/www/container/log/container.log")
+# funct.check_file("/var/www/container/log/room_temp.log")
+# funct.check_file("/var/www/container/log/speed.log")
 
 @app.route('/')
 def index():
     try:
-        degree_1 = funct.room_degree()
+        # degree_1 = funct.room_degree()
         degree_2 = funct.speed_internet()
     except FileNotFoundError:
         degree_1 = '-'
-        funct.log_write("Ошибка, файл room_temp.log - не найден\n")
-    return  render_template('index.html', room_degree=degree_1, speed_internet=degree_2)
+  #      funct.log_write("Ошибка, файл room_temp.log - не найден\n")
+    return  render_template('index.html', speed_internet=degree_2) #  room_degree=degree_1,
 @app.route('/hardware.html')
 def hardware():
     return  render_template('hardware.html')
