@@ -19,7 +19,7 @@ def test_speed(val):
                         break
                     if 'Download' in line or 'Upload' in line:
                         res.append(line.strip())
-                speed.write(" ".join(res))
+                speed.write(" , ".join(res))
                 speed.close()
         case "bad":
             with open(f'{save_path}speed.log', 'w') as speed:
