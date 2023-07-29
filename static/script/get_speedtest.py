@@ -20,7 +20,12 @@ def test_speed(val):
                         res.append(line.strip())
                 speed.write(" , ".join(res))
                 speed.close()
-                return (res.split('Mbit/s'))[0].replace("Download: ", "")
+                print(type(res))
+                print(res)
+                res = res.split('Mbit/s')
+                res = res[0].replace("Download: ", "")
+                return res
+                #return (res.split('Mbit/s'))[0].replace("Download: ", "")
         case "bad":
             with open(f'{save_path}speed.log', 'w') as speed:
                 speed.write("Not connection")
