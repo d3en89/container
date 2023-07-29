@@ -1,6 +1,8 @@
 import subprocess
+from os import devnull
 
-import sys
+FNULL = open(devnull, 'w')
+
 
 def test_speed(val):
 
@@ -11,21 +13,16 @@ def test_speed(val):
     match val:
         case "ok":
             with open(f'{save_path}speed.log', 'w') as speed:
-                res = []
+                res = ""
                 for line in start_script.stderr:
                     if 'ERROR' in line:
                         res += "" + line.strip()
                 for line in start_script.stdout:
                     if 'Download' in line or 'Upload' in line:
-                        res.append(line.strip())
-                speed.write(" , ".join(res))
+                        res += "" + line.strip()
+                speed.writelines(res.strip())
                 speed.close()
-                print(type(res))
-                print(res)
-                res = res.split('Mbit/s')
-                res = res[0].replace("Download: ", "")
-                return res
-                #return (res.split('Mbit/s'))[0].replace("Download: ", "")
+                return (res.split('Mbit/s'))[0].replace("Download: ", "")
         case "bad":
             with open(f'{save_path}speed.log', 'w') as speed:
                 speed.write("Not connection")
@@ -34,7 +31,9 @@ def test_speed(val):
 
 if __name__ == "__main__":
     try:
-        subprocess.check_call(["ping", "-c 1", "8.8.8.8"])
+        subprocess.check_call(["ping", "-c 1", "8.8.8.8"],
+                              stdout=FNULL,
+                              stderr=subprocess.STDOUT)
         print(test_speed("ok"))
     except subprocess.CalledProcessError:
         print(test_speed("bad"))
