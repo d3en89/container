@@ -20,7 +20,7 @@ def test_speed(val):
                 for line in start_script.stdout:
                     if 'Download' in line or 'Upload' in line:
                         res += "" + line.strip()
-                speed.writelines(res.strip())
+                speed.writelines(res.strip().replace("Upload", " Upload"))
                 speed.close()
                 return (res.split('Mbit/s'))[0].replace("Download: ", "")
         case "bad":
