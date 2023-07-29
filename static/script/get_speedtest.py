@@ -20,14 +20,16 @@ def test_speed(val):
                         res.append(line.strip())
                 speed.write(" , ".join(res))
                 speed.close()
-                return res
+                return res.split('Mbit/s')[0].replace("Download: ", "")
         case "bad":
             with open(f'{save_path}speed.log', 'w') as speed:
                 speed.write("Not connection")
                 speed.close()
+                return 'Not connection'
 
-try:
-    subprocess.check_call(["ping", "-c 1", "8.8.8.8"])
-    test_speed("ok")
-except subprocess.CalledProcessError:
-    test_speed("bad")
+if __name__ == "__main__":
+    try:
+        subprocess.check_call(["ping", "-c 1", "8.8.8.8"])
+        print(test_speed("ok"))
+    except subprocess.CalledProcessError:
+        print(test_speed("bad"))
