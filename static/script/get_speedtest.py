@@ -5,7 +5,7 @@ import sys
 def test_speed(val):
 
     save_path = '/var/www/container/log/'
-    test_command = ['/bin/speedtest', '--secure']
+    test_command = ['/usr/local/bin/speedtest-cli', '--secure']
     start_script = subprocess.Popen(test_command, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf-8')
 
     match val:
